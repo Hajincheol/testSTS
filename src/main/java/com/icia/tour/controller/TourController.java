@@ -120,9 +120,8 @@ public class TourController {
     }
     
     //회원 리스트
-    public ModelAndView mList(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
-			@RequestParam(value = "list", required = false, defaultValue = "5") int limit) {
-		return tsvc.mList(page, limit);
+    public ModelAndView mList(@RequestParam(value = "page", required = false, defaultValue = "1") int page, @RequestParam(value = "list", required = false, defaultValue = "5") int limit) {
+	return tsvc.mList(page, limit);
     }
 
     // 로그아웃 처리
@@ -132,12 +131,11 @@ public class TourController {
         return "index";
     }
        
-	// 패키지 리스트 페이지로 이동
-	@RequestMapping(value="/packages", method=RequestMethod.GET)
-	public ModelAndView packageList(@RequestParam(value="page", required=false, defaultValue="1") int page,
-									@RequestParam(value="limit", required=false, defaultValue="5") int limit) {
-		return tsvc.packageList(page, limit);
-  	} 
+    // 패키지 리스트 페이지로 이동
+    @RequestMapping(value="/packages", method=RequestMethod.GET)
+    public ModelAndView packageList(@RequestParam(value="page", required=false, defaultValue="1") int page, @RequestParam(value="limit", required=false, defaultValue="5") int limit) {
+	return tsvc.packageList(page, limit);
+    } 
     
     // 패키지 상세 정보 조회
     @RequestMapping(value="/detailList", method=RequestMethod.GET)
@@ -157,13 +155,13 @@ public class TourController {
         return tsvc.pSearch(search);
     }
     
-	// mSearch : 회원검색
- 	@RequestMapping(value="/mSearch", method=RequestMethod.GET)
- 	public ModelAndView mSearch(@ModelAttribute SearchDTO search) {
- 		return tsvc.mSearch(search);
- 	}
- 	
- 	//commentList : 댓글 목록 불러오기
+    // mSearch : 회원검색
+    @RequestMapping(value="/mSearch", method=RequestMethod.GET)
+    public ModelAndView mSearch(@ModelAttribute SearchDTO search) {
+	return tsvc.mSearch(search);
+    }
+
+    //commentList : 댓글 목록 불러오기
     @RequestMapping(value="/commentList", method=RequestMethod.POST)
     public @ResponseBody List<CommentDTO> commentList(@RequestParam("cpnum") int cpnum) {
         return tsvc.commentList(cpnum);
@@ -187,41 +185,40 @@ public class TourController {
         return tsvc.detaildelete(comment);
     }
 
-	// bList 페이징처리
- 	@RequestMapping(value = "/adminContactList", method = RequestMethod.GET)
- 	public ModelAndView adminContactList(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
- 			@RequestParam(value = "limit", required = false, defaultValue = "5") int limit) {
- 		return tsvc.adminContactList(page, limit);
- 	}
+    // bList 페이징처리
+    @RequestMapping(value = "/adminContactList", method = RequestMethod.GET)
+    public ModelAndView adminContactList(@RequestParam(value = "page", required = false, defaultValue = "1") int page, @RequestParam(value = "limit", required = false, defaultValue = "5") int limit) {
+ 	return tsvc.adminContactList(page, limit);
+    }
  	
-	// iSearch : 문의글검색
-  	@RequestMapping(value="/iSearch", method=RequestMethod.GET)
-  	public ModelAndView iSearch(@ModelAttribute SearchDTO search) {
-  		return tsvc.iSearch(search);
-  	}
+    // iSearch : 문의글검색
+    @RequestMapping(value="/iSearch", method=RequestMethod.GET)
+    public ModelAndView iSearch(@ModelAttribute SearchDTO search) {
+  	return tsvc.iSearch(search);
+    }
   	
-	// 문의작성 메소드
+    // 문의작성 메소드
     @RequestMapping(value = "/contact", method = RequestMethod.POST)
-	public ModelAndView contact(@ModelAttribute InquiryDTO inquiry) {
-		return tsvc.contact(inquiry);
-	}
+    public ModelAndView contact(@ModelAttribute InquiryDTO inquiry) {
+	return tsvc.contact(inquiry);
+    }
     
     // 문의정보 상세보기 메소드
     @RequestMapping(value = "/IView", method = RequestMethod.GET)
-	public ModelAndView IView(@RequestParam("INum") int INum) {
-		return tsvc.IView(INum);
-	}
+    public ModelAndView IView(@RequestParam("INum") int INum) {
+	return tsvc.IView(INum);
+    }
 
     // 계정 수정
     @RequestMapping(value = "/mModify", method = RequestMethod.POST)
-	public ModelAndView mModify(@ModelAttribute TourDTO tour) {
-		return tsvc.mModify(tour);
-	}
+    public ModelAndView mModify(@ModelAttribute TourDTO tour) {
+	return tsvc.mModify(tour);
+    }
     
     // 계정 삭제 
     @RequestMapping(value = "/Delete", method = RequestMethod.GET)
-	public ModelAndView Delete(@RequestParam("mId") String mId, @RequestParam("mProfileName") String mProfileName) {
-		session.invalidate();
-		return tsvc.Delete(mId, mProfileName);
-	}
+    public ModelAndView Delete(@RequestParam("mId") String mId, @RequestParam("mProfileName") String mProfileName) {
+	session.invalidate();
+	return tsvc.Delete(mId, mProfileName);
+    }
 }
